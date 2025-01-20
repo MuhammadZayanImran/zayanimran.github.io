@@ -1,4 +1,13 @@
-document.addEventListener('DOMContentLoaded', animateProgressBars);
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
 // Handle active state of navigation items
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -8,15 +17,6 @@ navLinks.forEach(link => {
         navLinks.forEach(l => l.classList.remove('active'));
         // Add active class to clicked link
         e.target.classList.add('active');
-    });
-});
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
     });
 });
 
@@ -63,24 +63,6 @@ function animateExperienceItems() {
     experienceItems.forEach(item => observer.observe(item));
 }
 
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-
-    // Here you would typically send the form data to your server
-    console.log('Form submitted:', { name, email, subject, message });
-
-    // Clear form
-    this.reset();
-
-    // Show success message (you can customize this)
-    alert('Message sent successfully!');
-});
 
 
 function animationmywork() {
@@ -164,5 +146,5 @@ document.addEventListener('DOMContentLoaded', () => {
     animationEducation();
     animationmywork();
     toggleNavbar();
-    
+
 });
