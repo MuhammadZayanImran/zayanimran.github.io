@@ -5,6 +5,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
+        // Close the sidebar after clicking the link
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        sidebar.classList.remove('active');
+        mainContent.classList.remove('shifted');
     });
 });
 
@@ -44,7 +49,7 @@ function animateProgressBars() {
 
     progressBars.forEach(bar => observer.observe(bar));
 }
-// Add this to your existing JavaScript
+
 function animateExperienceItems() {
     const experienceItems = document.querySelectorAll('.experience-item');
 
@@ -63,8 +68,6 @@ function animateExperienceItems() {
     experienceItems.forEach(item => observer.observe(item));
 }
 
-
-
 function animationmywork() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -79,6 +82,16 @@ function animationmywork() {
             const filterValue = btn.getAttribute('data-filter');
 
             portfolioItems.forEach(item => {
+                // Check if the item has data-category of 'banner' or 'thumbnail'
+                if (item.getAttribute('data-category') === 'banner' || item.getAttribute('data-category') === 'thumbnail') {
+                    if (filterValue !== 'all') {
+                        item.classList.remove('hide');
+                    } else {
+                        return; // Do nothing to these items
+                    }
+                    item.classList.add('hide');
+                }
+
                 if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                     item.classList.remove('hide');
                 } else {
@@ -131,6 +144,7 @@ function toggleNavbar() {
             }
         }
     });
+
     // Handle window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
@@ -139,6 +153,7 @@ function toggleNavbar() {
         }
     });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize progress bars
     animateProgressBars();
@@ -146,5 +161,4 @@ document.addEventListener('DOMContentLoaded', () => {
     animationEducation();
     animationmywork();
     toggleNavbar();
-
 });
