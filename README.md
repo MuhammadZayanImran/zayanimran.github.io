@@ -1,5 +1,3 @@
-# zayanimran.github.io
-Personal portfolio 
 # Zayan Imran - Graphic Designer Portfolio
 
 ## About Me
