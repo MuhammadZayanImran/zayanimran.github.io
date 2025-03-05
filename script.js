@@ -1,11 +1,10 @@
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('touchstart', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
-        // Close the sidebar after clicking the link
         const sidebar = document.querySelector('.sidebar');
         const mainContent = document.querySelector('.main-content');
         sidebar.classList.remove('active');
