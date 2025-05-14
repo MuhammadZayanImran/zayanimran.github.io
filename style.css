@@ -720,7 +720,9 @@ html {
 @media screen and (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
-        z-index: 99;
+        transition: transform 0.3s ease;
+        width: 200px;
+        z-index: 9;
     }
 
     .sidebar.active {
@@ -729,15 +731,49 @@ html {
 
     .menu-toggle {
         display: block;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .main-content {
         margin-left: 0;
+        padding: 1rem;
     }
 
-    .main-content.shifted {
-        margin-left: 250px;
+    .hero {
+        padding: 4rem 1.5rem;
     }
+
+    .hero-title .greeting {
+        font-size: 3rem;
+    }
+
+    .hero-title .introduction {
+        font-size: 3.5rem;
+    }
+
+    .nav-menu {
+        margin-top: 2rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem;
+        font-size: 14px;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        display: none;
+    }
+    
     .contact-section {
         padding: 3rem 2rem;
     }
